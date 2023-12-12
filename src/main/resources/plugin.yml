@@ -1,0 +1,13 @@
+name: SkyBlockSystem
+version: 1.0
+main: de.cdnrelaxo.skyblocksystem.SkyBlockSystem
+description: SkyBlockSystem
+load: STARTUP
+authors:
+    - CodingRelaxo
+api-version: 1.19
+
+depend:
+    - ProtocolLib
+
+commands:
