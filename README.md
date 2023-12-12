@@ -1,6 +1,6 @@
 # SkyBlockSystem ~ Aparadox_
 
-Plugin is Coded with [`paperweight`](https://github.com/PaperMC/paperweight/tree/main/paperweight-userdev) development
+Plugin is Coded with [`paperweight`](https://github.com/PaperMC/paperweight/) development
 
 ### notes (read these)
 
