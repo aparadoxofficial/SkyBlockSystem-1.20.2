@@ -21,7 +21,7 @@ public class SystemAreas {
         if (spawnArea1 != null && spawnArea2 != null) {
             this.spawnArea = new SpawnArea(spawnArea1, spawnArea2, spawnArea1.getWorld());
         }
-        // Spawn Stop //
+        // Spawn End //
 
         // PvP Start //
         Location pvpArea1 = new ConfigLocationUtil(Saved.PVP_AREA_1.locationsName()).loadLocation();
@@ -29,7 +29,7 @@ public class SystemAreas {
         if (pvpArea1 != null && pvpArea2 != null) {
             this.pvPArea = new PvPArea(pvpArea1, pvpArea2, pvpArea2.getWorld());
         }
-        // PvP Stop //
+        // PvP End //
     }
 
     public PvPArea getPvPArea() {
