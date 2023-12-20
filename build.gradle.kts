@@ -15,14 +15,15 @@ java {
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://repo.dmulloy2.net/repository/public/")
-    }
+    maven { url = uri("https://repo.dmulloy2.net/repository/public/") }
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
 }
 
 dependencies {
     paperweight.paperDevBundle("1.20.2-R0.1-SNAPSHOT")
     implementation("com.comphenix.protocol", "ProtocolLib","5.0.0")
+    compileOnly("com.fastasyncworldedit", "FastAsyncWorldEdit-Core", "2.8.3")
+    compileOnly("com.fastasyncworldedit", "FastAsyncWorldEdit-Bukkit", "2.8.3")
 }
 
 tasks {

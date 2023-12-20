@@ -1,5 +1,6 @@
 package de.cdnrelaxo.skyblocksystem.util.world.locations;
 
+import de.cdnrelaxo.skyblocksystem.SkyBlockSystem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -8,12 +9,18 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ConfigLocationUtil {
-    private Location location;
-    private String root;
+    private final Location location;
+    private final String root;
     File file = new File("plugins//SkyBlockSystem", "locations.yml");
     FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+
+    public ConfigLocationUtil() {
+        location = null;
+        root = null;
+    }
 
     public ConfigLocationUtil(Location location, String root) {
         this.location = location;
@@ -25,18 +32,21 @@ public class ConfigLocationUtil {
     }
 
     public void saveLocation() {
+        saveConfig();
+        assert location != null;
         config.set(root + ".World", location.getWorld().getName());
         config.set(root + ".X", location.getX());
         config.set(root + ".Y", location.getY());
         config.set(root + ".Z", location.getZ());
         config.set(root + ".Yaw", location.getYaw());
         config.set(root + ".Pitch", location.getPitch());
-        save();
+        saveConfig();
     }
 
     public Location loadLocation() {
+        saveConfig();
         if (config.contains(root)) {
-            World world = Bukkit.getWorld(config.getString(root + ".World"));
+            World world = Bukkit.getWorld(Objects.requireNonNull(config.getString(root + ".World")));
             double x = config.getDouble(root + ".X"),
                     y = config.getDouble(root + ".Y"),
                     z = config.getDouble(root + ".Z");
@@ -47,7 +57,7 @@ public class ConfigLocationUtil {
             return null;
     }
 
-    private void save() {
+    public void saveConfig() {
         if (!file.exists()) {
             try {
                 config.save(file);
